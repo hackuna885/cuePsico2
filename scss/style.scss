@@ -1,0 +1,29 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+html {
+  position: relative;
+  height: 100vh;
+  min-height: 25rem;
+  width: 100%;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.centrado-h-v {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="radio"] {
+  -ms-transform: scale(2); /* IE 9 */
+  -webkit-transform: scale(2); /* Chrome, Safari, Opera */
+  transform: scale(2);
+}
