@@ -662,7 +662,7 @@ app.component("web-regEst", {
               showConfirmButton: false,
               timer: 2000,
               onClose: () => {
-                window.location = "https://www.google.com.mx/";
+                window.location = "https://atenpsicologica.utfv.net/";
               },
             });
           } else {
