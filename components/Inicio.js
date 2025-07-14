@@ -190,17 +190,30 @@ app.component("web-regEst", {
                                             <!-- formulario -->
                                             <h3>Datos del estudiante</h3>
                                             <br>
-                                            <form action="" class="user">
+                                            <form class="user" @submit.prevent="alta">
                                                 <div class="form-group row">
                                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                                         <input type="text" class="form-control form-control-user"
-                                                            id="matricula" placeholder="Matrícula" pattern="[0-9]{10}"
-                                                            maxlength="12" @keypress="soloNumeros" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+                                                            id="matricula" placeholder="Matrícula" pattern="[0-9]{8,12}"
+                                                            maxlength="12" @keypress="soloNumeros" onkeypress="return event.charCode >= 48 && event.charCode <= 57" v-model="matricula" required>
                                                     </div>
                                                     <div class="col-sm-6 mb-3">
                                                         <input type="email" class="form-control form-control-user"
                                                             id="correo" placeholder="Correo Institucional (@utfv.edu.mx)"
-                                                            @keypress="soloCorreo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                                                            @keypress="soloCorreo" v-model="correoInst" required>
+                                                    </div>
+                                                    <div class="form-group" v-html="datos"></div>
+                                                    <div class="col-sm-6 mb-3">
+                                                        <input type="password" class="form-control form-control-user"
+                                                            id="passUno" placeholder="Contraseña..." minlength="6" v-model="passUsr" required>
+                                                    </div>
+                                                    <div class="col-sm-6 mb-3">
+                                                        <input type="password" class="form-control form-control-user"
+                                                            id="passDos" placeholder="Repetir contraseña..." minlength="6" :disabled="estadoPass" v-model="passUsrDos" required>
+                                                    </div>
+
+                                                    <div :class="notificaEstadoPass" role="alert">
+                                                      {{validaContrasena}}
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -208,29 +221,29 @@ app.component("web-regEst", {
                                                     <div class="col-sm-6 mb-3 mb-sm-3">
                                                         <input type="text" class="form-control form-control-user"
                                                             id="nombre" placeholder="Nombre" @keypress="soloLetras" onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;"
-                                                            required>
+                                                            v-model="nombre" required>
                                                     </div>
                                                     <div class="col-sm-6"></div>
                                                     <div class="col-sm-6 mb-3">
                                                         <input type="text" class="form-control form-control-user"
                                                             id="aPaterno" placeholder="Apellido Paterno"
-                                                            @keypress="soloLetras" onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;" required>
+                                                            @keypress="soloLetras" onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;" v-model="aPaterno" required>
                                                     </div>
                                                     <div class="col-sm-6 mb-3">
                                                         <input type="text" class="form-control form-control-user"
                                                             id="aMaterno" placeholder="Apellido Materno"
-                                                            @keypress="soloLetras" onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;" required>
+                                                            @keypress="soloLetras" onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;" v-model="aMaterno" required>
                                                     </div>
                                                     <div class="col-sm-6 mb-3">
                                                         <label class="form-label">Fecha de nacimiento:</label>
                                                         <input type="date" class="form-control form-control-user" id="fecha"
-                                                            placeholder="Fecha de nacimiento" maxlength="10" required>
+                                                            placeholder="Fecha de nacimiento" maxlength="10" v-model="fechaNa" required>
                                                     </div>
                                                     <div class="col-sm-6 mb-3">
                                                         <label class="form-label">Teléfono personal:</label>
                                                         <input type="text" class="form-control form-control-user"
-                                                            id="telefono" placeholder="Teléfono" pattern="[0-9]{10}"
-                                                            @keypress="soloNumeros" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" required>
+                                                            id="telefono" placeholder="Teléfono" pattern="[0-9]{8,13}"
+                                                            @keypress="soloNumeros" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" v-model="telPersonal" required>
                                                     </div>
                                                     <div class="col-sm-12 mb-3">
                                                         <label class="form-label">División Académica:</label>
@@ -261,7 +274,7 @@ app.component("web-regEst", {
                                                         <label>Nombre del tutor(a) Académico(a):</label>
                                                         <input type="text" class="form-control form-control-user"
                                                             id="nombreTut" placeholder="Nombre" @keypress="soloLetras" onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;"
-                                                            required>
+                                                            v-model="nomTutor" required>
                                                     </div>
                                                     <div class="col-sm-4 mb-3"></div>
                                                 </div>
@@ -271,12 +284,12 @@ app.component("web-regEst", {
                                                     <div class="col-sm-6 mb-3">
                                                         <input type="text" class="form-control form-control-user"
                                                             id="nombreRed" placeholder="Nombre" @keypress="soloLetras" onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;"
-                                                            required>
+                                                            v-model="nomRed" required>
                                                     </div>
                                                     <div class="col-sm-6 mb-3">
                                                         <input type="text" class="form-control form-control-user"
-                                                            id="telefonoRed" placeholder="Teléfono" pattern="[0-9]{10}"
-                                                            @keypress="soloNumeros" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" required>
+                                                            id="telefonoRed" placeholder="Teléfono" pattern="[0-9]{8,13}"
+                                                            @keypress="soloNumeros" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" v-model="telRed" required>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -287,35 +300,37 @@ app.component("web-regEst", {
                                                         <div class="text-center mt-4">
                                                             <div class="form-check form-check-inline mx-3 mx-sm-5">
                                                                 <input class="form-check-input" type="radio" name="turno"
-                                                                    value="Matutino">
+                                                                    value="Matutino" v-model="turno" required>
                                                                 <label class="form-check-label ml-2"> Matutino</label>
                                                             </div>
                                                             <div class="form-check form-check-inline mx-3 mx-sm-5">
                                                                 <input class="form-check-input" type="radio" name="turno"
-                                                                    value="Vespertino">
+                                                                    value="Vespertino" v-model="turno" required>
                                                                 <label class="form-check-label ml-2"> Vespertino</label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
     
-                                            </form>
-                                            <!-- formulario -->
-                                            <br>
-                                            <div class="row justify-content-center">
-                                                <div class="col-md-6 my-3">
+                                                <br>
+                                                <div class="row justify-content-center">
+                                                  <div class="col-md-6 my-3">
                                                     <router-link class="a btn btn-secondary btn-lg btn-block" to="/web-registro">
-                                                        <i class="fas fas fa-arrow-left"></i> Regresar
+                                                      <i class="fas fas fa-arrow-left"></i> Regresar
                                                     </router-link>
+                                                  </div>
+                                                  
+                                                  <div class="col-md-6 my-3">
+                                                    
+                                                    <button class="btn btn-success btn-lg btn-block"
+                                                    :disabled="this.matricula != '' && this.correoInst != '' && this.passUsr != '' && this.passUsrDos != '' && this.nombre != '' && this.aPaterno != '' && this.aMaterno != '' && this.fechaNa != '' && this.telPersonal != '' && this.selectedDivision != '' && this.selectedSpecialty != '' && this.nomTutor != '' && this.nomRed != '' && this.telRed != '' && this.turno != '' && this.validaBtn === true ? this.estadoBtn = flase : this.estadoBtn = true">
+                                                    <i class="fas fas fa-arrow-right"></i> Continuar
+                                                  </button>
+                                                  
                                                 </div>
 
-                                                <div class="col-md-6 my-3">
-                                                    <a href="#" class="btn btn-success btn-lg btn-block">
-                                                        <span class="icon">
-                                                            <i class="fas fas fa-arrow-right"></i> Continuar
-                                                        </span>
-                                                    </a>
-                                                </div>
+                                              </form>
+                                              <!-- formulario -->
                                             </div>
                                         </div>
                                     </div>
@@ -335,8 +350,26 @@ app.component("web-regEst", {
     `,
   data() {
     return {
+      datos: '',
+      matricula: "",
+      correoInst: "",
+      passUsr: "",
+      passUsrDos: "",
+      estadoPass: true,
+      notificaEstadoPass: "",
+      validaBtn: false,
+      estadoBtn: false,
+      nombre: "",
+      aPaterno: "",
+      aMaterno: "",
+      fechaNa: "",
+      telPersonal: "",
       selectedDivision: "",
       selectedSpecialty: "",
+      nomTutor: "",
+      nomRed: "",
+      telRed: "",
+      turno: "",
       divisions: [
         {
           value: "División Académica de Administración",
@@ -550,6 +583,44 @@ app.component("web-regEst", {
     };
   },
   computed: {
+    validaContrasena() {
+      this.notificaEstadoPass = "small alert alert-light text-muted";
+
+      if (this.passUsr.length >= 6) {
+        this.estadoPass = false;
+        this.msgAlert =
+          "La contraseña debe tener al menos seis (6) caracteres.";
+        this.validaBtn = false;
+
+        if (this.passUsrDos.length >= 6) {
+          if (this.passUsr === this.passUsrDos) {
+            this.notificaEstadoPass = "small alert alert-success";
+            this.msgAlert = "Contraseña valida.";
+            this.validaBtn = true;
+          } else {
+            this.notificaEstadoPass = "small alert alert-danger";
+            this.msgAlert = "¡Error! Las contraseñas no coinciden.";
+            this.validaBtn = false;
+          }
+        } else {
+          this.estadoPass = false;
+          this.validaBtn = false;
+        }
+      } else {
+        this.msgAlert =
+          "La contraseña debe tener al menos seis (6) caracteres.";
+
+        if (this.passUsrDos != "") {
+          this.estadoPass = false;
+          this.validaBtn = false;
+        } else {
+          this.estadoPass = true;
+          this.validaBtn = false;
+        }
+      }
+
+      return this.msgAlert;
+    },
     filteredSpecialties() {
       return this.allSpecialties[this.selectedDivision] || [];
     },
@@ -563,6 +634,44 @@ app.component("web-regEst", {
     },
   },
   methods: {
+    alta() {
+      axios
+        .post("../cuePsico2/registro/alta.app", {
+          opcion: 1,
+          matricula: this.matricula,
+          correoInst: this.correoInst,
+          passUsr: this.passUsr,
+          passUsrDos: this.passUsrDos,
+          nombre: this.nombre,
+          aPaterno: this.aPaterno,
+          aMaterno: this.aMaterno,
+          fechaNa: this.fechaNa,
+          telPersonal: this.telPersonal,
+          selectedDivision: this.selectedDivision,
+          selectedSpecialty: this.selectedSpecialty,
+          nomTutor: this.nomTutor,
+          nomRed: this.nomRed,
+          telRed: this.telRed,
+          turno: this.turno,
+        })
+        .then((response) => {
+          if (response.data === "correcto") {
+            Swal.fire({
+              icon: "success",
+              title: "¡Usuario Activado!",
+              showConfirmButton: false,
+              timer: 2000,
+              onClose: () => {
+                window.location = "https://www.google.com.mx/";
+              },
+            });
+          } else {
+            this.datos = response.data;
+            // console.log(response.data);
+          }
+        });
+    },
+
     soloLetras() {
       if (
         (event.keyCode > 32 && event.keyCode < 48) ||
@@ -587,11 +696,10 @@ app.component("web-regEst", {
         return true;
       }
       if (!emailRegex.test(char)) {
-        event.preventDefault();        
+        event.preventDefault();
         return false;
-      } 
+      }
     },
-    
   },
   created() {},
   mounted() {},
