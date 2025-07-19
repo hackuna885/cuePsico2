@@ -12,12 +12,14 @@ const Inicio = { template: '<web-inicio></web-inicio>' }
 const Web_registro = { template: '<web-registro></web-registro>' }
 const Web_regEst = { template: '<web-regEst></web-regEst>' }
 const Web_regDoc = { template: '<web-regDoc></web-regDoc>' }
+const Web_citas = { template: '<web-citas></web-citas>' }
 
 const routes = [
   { path: '/', component: Inicio },
   { path: '/web-registro', component: Web_registro },
   { path: '/web-regEst', component: Web_regEst },
-  { path: '/web-regDoc', component: Web_regDoc }
+  { path: '/web-regDoc', component: Web_regDoc },
+  { path: '/web-citas', component: Web_citas }
 ]
 
 const router = VueRouter.createRouter({

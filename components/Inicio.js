@@ -1,71 +1,68 @@
 app.component("web-inicio", {
   template: /*html*/ `
-    <div class="row justify-content-center align-items-center vh-100 animate__animated animate__fadeIn">
-    
-        <div class="col-md-10 mx-auto">
-            <div class="row justify-content-center align-items-center vh-100">
-    
-                <div class="card border-0 shadow-lg">
-                    <div class="card-body p-0">
-                        <div class="row">
-    
-                            <div class="col-md-12 d-md-block animate__animated animate__fadeIn">
-                                <div class="col-md-8 mx-auto">
-                                    <div class="my-3">
-                                        <div class="my-3">
-                                            <div class="mx-auto text-center">
-                                                <img src="img/logoPsicologia_3D_2.jpg" class="img-fluid" alt="logo"
-                                                    style="width: 350px;">
-                                            </div>
-                                            <h1 class="text-center h2">
-                                                Área de Atención Psicológica
-                                            </h1>
-                                            <br>
-                                            <p class="text-justify">
-                                                1. Es un requisito obligatorio que todos (a) los (a) pacientes que
-                                                solicitan el servicio de atención psicológica por
-                                                primera vez tomen la plática de inducción, donde se
-                                                brinda información importante sobre sus orientaciones
-                                                psicológicas, así como los lineamientos y reglamento
-                                                del uso del servicio. Esta plática se imparte todos los
-                                                días lunes a las 11: 00 am y a las 4:00 pm.
-                                                <br />
-                                                <br />
-                                                2. Los paciente de primera vez, deberán registrarse en
-                                                la plataforma con los siguientes datos, para crear una
-                                                cuenta en la plataforma, y de esta manera estar
-                                                gestionando sus citas de seguimiento con su terapeuta
-                                                asignado.
-                                            </p>
-                                            <br />
-                                            <div class="row justify-content-center">
-                                                <div class="col-md-6 my-3">
-                                                    <router-link class="a btn btn-secondary btn-lg btn-block" to="/web-registro">
-                                                        <i class="fas fa-flag"></i> Regístrate
-                                                    </router-link>
-                                                </div>
-                                                <div class="col-md-6 my-3">
-                                                    <a href="#" class="btn btn-success btn-lg btn-block">
-                                                        <span class="icon">
-                                                            <i class="fas fa-check"></i> Iniciar sesión
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-    
-                        </div>
+<div class="row justify-content-center align-items-center vh-100 animate__animated animate__fadeIn">
+
+  <div class="col-md-10 mx-auto">
+    <div class="row justify-content-center align-items-center vh-100">
+
+      <div class="card border-0 shadow-lg">
+        <div class="card-body p-0">
+          <div class="row">
+
+            <div class="col-md-12 d-md-block animate__animated animate__fadeIn">
+              <div class="col-md-8 mx-auto">
+                <div class="my-3">
+                  <div class="my-3">
+                    <div class="mx-auto text-center">
+                      <img src="img/logoPsicologia_3D_2.jpg" class="img-fluid" alt="logo" style="width: 350px;">
                     </div>
+                    <h1 class="text-center h2">
+                      Área de Atención Psicológica
+                    </h1>
+                    <br>
+                    <p class="text-justify">
+                      1. Es un requisito obligatorio que todos (a) los (a) pacientes que
+                      solicitan el servicio de atención psicológica por
+                      primera vez tomen la plática de inducción, donde se
+                      brinda información importante sobre sus orientaciones
+                      psicológicas, así como los lineamientos y reglamento
+                      del uso del servicio. Esta plática se imparte todos los
+                      días lunes a las 11: 00 am y a las 4:00 pm.
+                      <br />
+                      <br />
+                      2. Los paciente de primera vez, deberán registrarse en
+                      la plataforma con los siguientes datos, para crear una
+                      cuenta en la plataforma, y de esta manera estar
+                      gestionando sus citas de seguimiento con su terapeuta
+                      asignado.
+                    </p>
+                    <br />
+                    <div class="row justify-content-center">
+                      <div class="col-md-6 my-3">
+                        <router-link class="a btn btn-secondary btn-lg btn-block" to="/web-registro">
+                          <i class="fas fa-flag"></i> Regístrate
+                        </router-link>
+                      </div>
+                      <div class="col-md-6 my-3">
+                        <router-link class="a btn btn-success btn-lg btn-block" to="/web-citas">
+                          Iniciar sesión <i class="fas fa-user-alt"></i>
+                        </router-link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-    
+              </div>
             </div>
-    
+
+          </div>
         </div>
+      </div>
+
     </div>
-    `,
+
+  </div>
+</div>
+`,
   data() {
     return {
       datos: "",
@@ -79,72 +76,72 @@ app.component("web-inicio", {
 
 app.component("web-registro", {
   template: /*html*/ `
-    <div class="row justify-content-center align-items-center vh-100 animate__animated animate__fadeIn">
-    
-        <div class="col-md-10 mx-auto">
-            <div class="row justify-content-center align-items-center vh-100">
-    
-                <!-- contenido web -->
-                <div class="card border-0 shadow-lg">
-                    <div class="card-body p-0">
-                        <div class="row">
-    
-                            <div class="col-md-12 d-md-block animate__animated animate__fadeIn">
-                                <div class="col-md-8 mx-auto">
-                                    <div class="my-3">
-                                        <div class="my-3">
-                                            <div class="mx-auto text-center">
-                                                <img src="img/registro_2.jpg" class="img-fluid" style="width: 350px;">
-                                            </div>
-                                            <h1 class="text-center h2">
-                                                Regístrate
-                                            </h1>
-                                            <br>
-                                            <p class="text-justify">
-                                                Los y las pacientes de primera vez, deberán registrarse en
-                                                la plataforma con los siguientes datos, para crear una
-                                                cuenta en la plataforma, y de esta manera estar
-                                                gestionando sus citas de seguimiento con su terapeuta
-                                                asignado.
-                                            </p>
-                                            <br />
-                                            <div class="row text-center mx-auto">
-                                                <router-link class="col-md-6 my-3 text-center" to="/web-regEst">
-                                                    <img src="img/estudiante.jpg" class="img-fluid" style="width: 150px;">
-                                                    <p class="h6">Registro Estudiante</p>
-                                                </router-link>
+<div class="row justify-content-center align-items-center vh-100 animate__animated animate__fadeIn">
 
-                                                <router-link class="col-md-6 my-3 text-center" to="/web-regDoc">
-                                                    <img src="img/docente.jpg" class="img-fluid" style="width: 150px;">
-                                                    <p class="h6">Registro Docente</p>
-                                                </router-link>
-                                            </div>
-                                            <br>
-                                            <div class="row justify-content-center">
-                                                <div class="col-md-12 my-3">
+  <div class="col-md-10 mx-auto">
+    <div class="row justify-content-center align-items-center vh-100">
 
-                                                    <router-link class="a btn btn-secondary btn-lg btn-block" to="/">
-                                                        <i class="fas fas fa-arrow-left"></i> Regresar
-                                                    </router-link>
+      <!-- contenido web -->
+      <div class="card border-0 shadow-lg">
+        <div class="card-body p-0">
+          <div class="row">
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-    
-                        </div>
+            <div class="col-md-12 d-md-block animate__animated animate__fadeIn">
+              <div class="col-md-8 mx-auto">
+                <div class="my-3">
+                  <div class="my-3">
+                    <div class="mx-auto text-center">
+                      <img src="img/registro_2.jpg" class="img-fluid" style="width: 350px;">
                     </div>
+                    <h1 class="text-center h2">
+                      Regístrate
+                    </h1>
+                    <br>
+                    <p class="text-justify">
+                      Los y las pacientes de primera vez, deberán registrarse en
+                      la plataforma con los siguientes datos, para crear una
+                      cuenta en la plataforma, y de esta manera estar
+                      gestionando sus citas de seguimiento con su terapeuta
+                      asignado.
+                    </p>
+                    <br />
+                    <div class="row text-center mx-auto">
+                      <router-link class="col-md-6 my-3 text-center" to="/web-regEst">
+                        <img src="img/estudiante.jpg" class="img-fluid" style="width: 150px;">
+                        <p class="h6">Registro Estudiante</p>
+                      </router-link>
+
+                      <router-link class="col-md-6 my-3 text-center" to="/web-regDoc">
+                        <img src="img/docente.jpg" class="img-fluid" style="width: 150px;">
+                        <p class="h6">Registro Docente</p>
+                      </router-link>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                      <div class="col-md-12 my-3">
+
+                        <router-link class="a btn btn-secondary btn-lg btn-block" to="/">
+                          <i class="fas fas fa-arrow-left"></i> Regresar
+                        </router-link>
+
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <!-- contenido web -->
-    
-    
+              </div>
             </div>
-    
+
+          </div>
         </div>
+      </div>
+      <!-- contenido web -->
+
+
     </div>
-    `,
+
+  </div>
+</div>
+`,
   data() {
     return {
       datos: "",
@@ -158,199 +155,206 @@ app.component("web-registro", {
 
 app.component("web-regEst", {
   template: /*html*/ `
-    <div class="row justify-content-center align-items-center vh-100 animate__animated animate__fadeIn">
-    
-        <div class="col-md-10 mx-auto">
-            <div class="row justify-content-center align-items-center vh-100">
-    
-                <!-- contenido web -->
-                <div class="card border-0 shadow-lg">
-                    <div class="card-body p-0">
-                        <div class="row">
-    
-                            <div class="col-md-12 d-md-block animate__animated animate__fadeIn">
-                                <div class="col-md-8 mx-auto">
-                                    <div class="my-3">
-                                        <div class="my-3">
-                                            <div class="mx-auto text-center">
-                                                <img src="img/estudiante.jpg" class="img-fluid" style="width: 350px;">
-                                            </div>
-                                            <h1 class="text-center h2">
-                                                Estudiantes
-                                            </h1>
-                                            <br>
-                                            <p class="text-justify">
-                                                Los y las pacientes de primera vez, deberán registrarse en
-                                                la plataforma con los siguientes datos, para crear una
-                                                cuenta en la plataforma, y de esta manera estar
-                                                gestionando sus citas de seguimiento con su terapeuta
-                                                asignado.
-                                            </p>
-                                            <br>
-                                            <!-- formulario -->
-                                            <h3>Datos del estudiante</h3>
-                                            <br>
-                                            <form class="user" @submit.prevent="alta">
-                                                <div class="form-group row">
-                                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                                        <input type="text" class="form-control form-control-user"
-                                                            id="matricula" placeholder="Matrícula" pattern="[0-9]{8,12}"
-                                                            maxlength="12" @keypress="soloNumeros" onkeypress="return event.charCode >= 48 && event.charCode <= 57" v-model="matricula" required>
-                                                    </div>
-                                                    <div class="col-sm-6 mb-3">
-                                                        <input type="email" class="form-control form-control-user"
-                                                            id="correo" placeholder="Correo Institucional (@utfv.edu.mx)"
-                                                            @keypress="soloCorreo" v-model="correoInst" required>
-                                                    </div>
-                                                    <div class="form-group" v-html="datos"></div>
-                                                    <div class="col-sm-6 mb-3">
-                                                        <input type="password" class="form-control form-control-user"
-                                                            id="passUno" placeholder="Contraseña..." minlength="6" v-model="passUsr" required>
-                                                    </div>
-                                                    <div class="col-sm-6 mb-3">
-                                                        <input type="password" class="form-control form-control-user"
-                                                            id="passDos" placeholder="Repetir contraseña..." minlength="6" :disabled="estadoPass" v-model="passUsrDos" required>
-                                                    </div>
+<div class="row justify-content-center align-items-center vh-100 animate__animated animate__fadeIn">
 
-                                                    <div :class="notificaEstadoPass" role="alert">
-                                                      {{validaContrasena}}
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-6 mb-3 mb-sm-3">
-                                                        <input type="text" class="form-control form-control-user"
-                                                            id="nombre" placeholder="Nombre" @keypress="soloLetras" onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;"
-                                                            v-model="nombre" required>
-                                                    </div>
-                                                    <div class="col-sm-6"></div>
-                                                    <div class="col-sm-6 mb-3">
-                                                        <input type="text" class="form-control form-control-user"
-                                                            id="aPaterno" placeholder="Apellido Paterno"
-                                                            @keypress="soloLetras" onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;" v-model="aPaterno" required>
-                                                    </div>
-                                                    <div class="col-sm-6 mb-3">
-                                                        <input type="text" class="form-control form-control-user"
-                                                            id="aMaterno" placeholder="Apellido Materno"
-                                                            @keypress="soloLetras" onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;" v-model="aMaterno" required>
-                                                    </div>
-                                                    <div class="col-sm-6 mb-3">
-                                                        <label class="form-label">Fecha de nacimiento:</label>
-                                                        <input type="date" class="form-control form-control-user" id="fecha"
-                                                            placeholder="Fecha de nacimiento" maxlength="10" v-model="fechaNa" required>
-                                                    </div>
-                                                    <div class="col-sm-6 mb-3">
-                                                        <label class="form-label">Teléfono personal:</label>
-                                                        <input type="text" class="form-control form-control-user"
-                                                            id="telefono" placeholder="Teléfono" pattern="[0-9]{8,13}"
-                                                            @keypress="soloNumeros" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" v-model="telPersonal" required>
-                                                    </div>
-                                                    <div class="col-sm-12 mb-3">
-                                                        <label class="form-label">División Académica:</label>
-                                                        <select class="form-control custom-select"
-                                                            v-model="selectedDivision">
-                                                            <option value="">Selecciona una división</option>
-                                                            <option v-for="division in divisions" :key="division.value"
-                                                                :value="division.value">
-                                                                {{ division.text }}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-sm-12 mb-3">
-                                                        <label class="form-label">Programa Educativo:</label>
-                                                        <select class="form-control custom-select"
-                                                            v-model="selectedSpecialty" :disabled="!selectedDivision">
-                                                            <option value="">Selecciona una carrera</option>
-                                                            <option v-for="specialty in filteredSpecialties"
-                                                                :key="specialty.value" :value="specialty.value">
-                                                                {{ specialty.text }}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-8 mb-3">
-                                                        <label>Nombre del tutor(a) Académico(a):</label>
-                                                        <input type="text" class="form-control form-control-user"
-                                                            id="nombreTut" placeholder="Nombre" @keypress="soloLetras" onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;"
-                                                            v-model="nomTutor" required>
-                                                    </div>
-                                                    <div class="col-sm-4 mb-3"></div>
-                                                </div>
-                                                <hr>
-                                                <div class="form-group row">
-                                                    <p class="ml-3">Nombre y número telefónico de Red de Apoyo:</p>
-                                                    <div class="col-sm-6 mb-3">
-                                                        <input type="text" class="form-control form-control-user"
-                                                            id="nombreRed" placeholder="Nombre" @keypress="soloLetras" onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;"
-                                                            v-model="nomRed" required>
-                                                    </div>
-                                                    <div class="col-sm-6 mb-3">
-                                                        <input type="text" class="form-control form-control-user"
-                                                            id="telefonoRed" placeholder="Teléfono" pattern="[0-9]{8,13}"
-                                                            @keypress="soloNumeros" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" v-model="telRed" required>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-12 mb-3">
-                                                        <label>Selecciona el turno contrario a tu horario de clases para
-                                                            recibir atención psicológica:</label>
-                                                        <div class="text-center mt-4">
-                                                            <div class="form-check form-check-inline mx-3 mx-sm-5">
-                                                                <input class="form-check-input" type="radio" name="turno"
-                                                                    value="Matutino" v-model="turno" required>
-                                                                <label class="form-check-label ml-2"> Matutino</label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline mx-3 mx-sm-5">
-                                                                <input class="form-check-input" type="radio" name="turno"
-                                                                    value="Vespertino" v-model="turno" required>
-                                                                <label class="form-check-label ml-2"> Vespertino</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-    
-                                                <br>
-                                                <div class="row justify-content-center">
-                                                  <div class="col-md-6 my-3">
-                                                    <router-link class="a btn btn-secondary btn-lg btn-block" to="/web-registro">
-                                                      <i class="fas fas fa-arrow-left"></i> Regresar
-                                                    </router-link>
-                                                  </div>
-                                                  
-                                                  <div class="col-md-6 my-3">
-                                                    
-                                                    <button class="btn btn-success btn-lg btn-block"
-                                                    :disabled="this.matricula != '' && this.correoInst != '' && this.passUsr != '' && this.passUsrDos != '' && this.nombre != '' && this.aPaterno != '' && this.aMaterno != '' && this.fechaNa != '' && this.telPersonal != '' && this.selectedDivision != '' && this.selectedSpecialty != '' && this.nomTutor != '' && this.nomRed != '' && this.telRed != '' && this.turno != '' && this.validaBtn === true ? this.estadoBtn = flase : this.estadoBtn = true">
-                                                    <i class="fas fas fa-arrow-right"></i> Continuar
-                                                  </button>
-                                                  
-                                                </div>
+  <div class="col-md-10 mx-auto">
+    <div class="row justify-content-center align-items-center vh-100">
 
-                                              </form>
-                                              <!-- formulario -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-    
-                        </div>
+      <!-- contenido web -->
+      <div class="card border-0 shadow-lg">
+        <div class="card-body p-0">
+          <div class="row">
+
+            <div class="col-md-12 d-md-block animate__animated animate__fadeIn">
+              <div class="col-md-8 mx-auto">
+                <div class="my-3">
+                  <div class="my-3">
+                    <div class="mx-auto text-center">
+                      <img src="img/estudiante.jpg" class="img-fluid" style="width: 350px;">
                     </div>
+                    <h1 class="text-center h2">
+                      Estudiantes
+                    </h1>
+                    <br>
+                    <p class="text-justify">
+                      Los y las pacientes de primera vez, deberán registrarse en
+                      la plataforma con los siguientes datos, para crear una
+                      cuenta en la plataforma, y de esta manera estar
+                      gestionando sus citas de seguimiento con su terapeuta
+                      asignado.
+                    </p>
+                    <br>
+                    <!-- formulario -->
+                    <h3>Datos del estudiante</h3>
+                    <br>
+                    <form class="user" @submit.prevent="alta">
+                      <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                          <input type="text" class="form-control form-control-user" id="matricula"
+                            placeholder="Matrícula" pattern="[0-9]{8,12}" maxlength="12" @keypress="soloNumeros"
+                            onkeypress="return event.charCode >= 48 && event.charCode <= 57" v-model="matricula"
+                            required>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          <input type="email" class="form-control form-control-user" id="correo"
+                            placeholder="Correo Institucional (@utfv.edu.mx)" @keypress="soloCorreo"
+                            v-model="correoInst" required>
+                        </div>
+                        <div class="form-group" v-html="datos"></div>
+                        <div class="col-sm-6 mb-3">
+                          <input type="password" class="form-control form-control-user" id="passUno"
+                            placeholder="Contraseña..." minlength="6" v-model="passUsr" required>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          <input type="password" class="form-control form-control-user" id="passDos"
+                            placeholder="Repetir contraseña..." minlength="6" :disabled="estadoPass"
+                            v-model="passUsrDos" required>
+                        </div>
+
+                        <div :class="notificaEstadoPass" role="alert">
+                          {{validaContrasena}}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-3">
+                          <input type="text" class="form-control form-control-user" id="nombre" placeholder="Nombre"
+                            @keypress="soloLetras"
+                            onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;"
+                            v-model="nombre" required>
+                        </div>
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-6 mb-3">
+                          <input type="text" class="form-control form-control-user" id="aPaterno"
+                            placeholder="Apellido Paterno" @keypress="soloLetras"
+                            onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;"
+                            v-model="aPaterno" required>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          <input type="text" class="form-control form-control-user" id="aMaterno"
+                            placeholder="Apellido Materno" @keypress="soloLetras"
+                            onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;"
+                            v-model="aMaterno" required>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          <label class="form-label">Fecha de nacimiento:</label>
+                          <input type="date" class="form-control form-control-user" id="fecha"
+                            placeholder="Fecha de nacimiento" maxlength="10" v-model="fechaNa" required>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          <label class="form-label">Teléfono personal:</label>
+                          <input type="text" class="form-control form-control-user" id="telefono" placeholder="Teléfono"
+                            pattern="[0-9]{8,13}" @keypress="soloNumeros"
+                            onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10"
+                            v-model="telPersonal" required>
+                        </div>
+                        <div class="col-sm-12 mb-3">
+                          <label class="form-label">División Académica:</label>
+                          <select class="form-control custom-select" v-model="selectedDivision">
+                            <option value="">Selecciona una división</option>
+                            <option v-for="division in divisions" :key="division.value" :value="division.value">
+                              {{ division.text }}
+                            </option>
+                          </select>
+                        </div>
+                        <div class="col-sm-12 mb-3">
+                          <label class="form-label">Programa Educativo:</label>
+                          <select class="form-control custom-select" v-model="selectedSpecialty"
+                            :disabled="!selectedDivision">
+                            <option value="">Selecciona una carrera</option>
+                            <option v-for="specialty in filteredSpecialties" :key="specialty.value"
+                              :value="specialty.value">
+                              {{ specialty.text }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="form-group row">
+                        <div class="col-sm-8 mb-3">
+                          <label>Nombre del tutor(a) Académico(a):</label>
+                          <input type="text" class="form-control form-control-user" id="nombreTut" placeholder="Nombre"
+                            @keypress="soloLetras"
+                            onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;"
+                            v-model="nomTutor" required>
+                        </div>
+                        <div class="col-sm-4 mb-3"></div>
+                      </div>
+                      <hr>
+                      <div class="form-group row">
+                        <p class="ml-3">Nombre y número telefónico de Red de Apoyo:</p>
+                        <div class="col-sm-6 mb-3">
+                          <input type="text" class="form-control form-control-user" id="nombreRed" placeholder="Nombre"
+                            @keypress="soloLetras"
+                            onKeypress="if (event.keyCode > 32 && event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 65 || event.keyCode > 90 && event.keyCode < 97 || event.keyCode > 122 && event.keyCode < 160 || event.keyCode > 166 && event.keyCode < 190) event.returnValue = false;"
+                            v-model="nomRed" required>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          <input type="text" class="form-control form-control-user" id="telefonoRed"
+                            placeholder="Teléfono" pattern="[0-9]{8,13}" @keypress="soloNumeros"
+                            onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10"
+                            v-model="telRed" required>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="form-group row">
+                        <div class="col-sm-12 mb-3">
+                          <label>Selecciona el turno contrario a tu horario de clases para
+                            recibir atención psicológica:</label>
+                          <div class="text-center mt-4">
+                            <div class="form-check form-check-inline mx-3 mx-sm-5">
+                              <input class="form-check-input" type="radio" name="turno" value="Matutino" v-model="turno"
+                                required>
+                              <label class="form-check-label ml-2"> Matutino</label>
+                            </div>
+                            <div class="form-check form-check-inline mx-3 mx-sm-5">
+                              <input class="form-check-input" type="radio" name="turno" value="Vespertino"
+                                v-model="turno" required>
+                              <label class="form-check-label ml-2"> Vespertino</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <br>
+                      <div class="row justify-content-center">
+                        <div class="col-md-6 my-3">
+                          <router-link class="a btn btn-secondary btn-lg btn-block" to="/web-registro">
+                            <i class="fas fas fa-arrow-left"></i> Regresar
+                          </router-link>
+                        </div>
+
+                        <div class="col-md-6 my-3">
+
+                          <button class="btn btn-success btn-lg btn-block"
+                            :disabled="this.matricula != '' && this.correoInst != '' && this.passUsr != '' && this.passUsrDos != '' && this.nombre != '' && this.aPaterno != '' && this.aMaterno != '' && this.fechaNa != '' && this.telPersonal != '' && this.selectedDivision != '' && this.selectedSpecialty != '' && this.nomTutor != '' && this.nomRed != '' && this.telRed != '' && this.turno != '' && this.validaBtn === true ? this.estadoBtn = flase : this.estadoBtn = true">
+                            <i class="fas fas fa-arrow-right"></i> Continuar
+                          </button>
+
+                        </div>
+
+                    </form>
+                    <!-- formulario -->
+                  </div>
                 </div>
-                <!-- contenido web -->
-    
-    
+              </div>
             </div>
-    
+          </div>
+
         </div>
+      </div>
     </div>
-    `,
+    <!-- contenido web -->
+
+
+  </div>
+
+</div>
+</div>
+`,
   data() {
     return {
-      datos: '',
+      datos: "",
       matricula: "",
       correoInst: "",
       passUsr: "",
@@ -662,7 +666,7 @@ app.component("web-regEst", {
               showConfirmButton: false,
               timer: 2000,
               onClose: () => {
-                window.location = "https://atenpsicologica.utfv.net/";
+                window.location = "Web_citas";
               },
             });
           } else {
@@ -704,72 +708,71 @@ app.component("web-regEst", {
   created() {},
   mounted() {},
 });
-
 app.component("web-regDoc", {
-  template: /*html*/ `
-    <div class="row justify-content-center align-items-center vh-100 animate__animated animate__fadeIn">
-    
-        <div class="col-md-10 mx-auto">
-            <div class="row justify-content-center align-items-center vh-100">
-    
-                <!-- contenido web -->
-                <div class="card border-0 shadow-lg">
+  template: /*html*/ ` <div
+              class="row justify-content-center align-items-center vh-100 animate__animated animate__fadeIn">
+
+              <div class="col-md-10 mx-auto">
+                <div class="row justify-content-center align-items-center vh-100">
+
+                  <!-- contenido web -->
+                  <div class="card border-0 shadow-lg">
                     <div class="card-body p-0">
-                        <div class="row">
-    
-                            <div class="col-md-12 d-md-block animate__animated animate__fadeIn">
-                                <div class="col-md-8 mx-auto">
-                                    <div class="my-3">
-                                        <div class="my-3">
-                                            <div class="mx-auto text-center">
-                                                <img src="img/docente.jpg" class="img-fluid" style="width: 350px;">
-                                            </div>
-                                            <h1 class="text-center h2">
-                                                Docentes
-                                            </h1>
-                                            <br>
-                                            <p class="text-justify">
-                                                Los y las paciente de primera vez, deberán registrarse en
-                                                la plataforma con los siguientes datos, para crear una
-                                                cuenta en la plataforma, y de esta manera estar
-                                                gestionando sus citas de seguimiento con su terapeuta
-                                                asignado.
-                                            </p>
-                                            <br>
-    
-                                            <br>
-                                            <div class="row justify-content-center">
-                                                <div class="col-md-6 my-3">
-                                                    <router-link class="a btn btn-secondary btn-lg btn-block" to="/web-registro">
-                                                        <i class="fas fas fa-arrow-left"></i> Regresar
-                                                    </router-link>                                                    
-                                                </div>
+                      <div class="row">
 
-                                                <div class="col-md-6 my-3">
-                                                    <a href="#" class="btn btn-success btn-lg btn-block">
-                                                        <span class="icon">
-                                                            <i class="fas fas fa-arrow-right"></i> Continuar
-                                                        </span>
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="col-md-12 d-md-block animate__animated animate__fadeIn">
+                          <div class="col-md-8 mx-auto">
+                            <div class="my-3">
+                              <div class="my-3">
+                                <div class="mx-auto text-center">
+                                  <img src="img/docente.jpg" class="img-fluid" style="width: 350px;">
                                 </div>
+                                <h1 class="text-center h2">
+                                  Docentes
+                                </h1>
+                                <br>
+                                <p class="text-justify">
+                                  Los y las paciente de primera vez, deberán registrarse en
+                                  la plataforma con los siguientes datos, para crear una
+                                  cuenta en la plataforma, y de esta manera estar
+                                  gestionando sus citas de seguimiento con su terapeuta
+                                  asignado.
+                                </p>
+                                <br>
+
+                                <br>
+                                <div class="row justify-content-center">
+                                  <div class="col-md-6 my-3">
+                                    <router-link class="a btn btn-secondary btn-lg btn-block" to="/web-registro">
+                                      <i class="fas fas fa-arrow-left"></i> Regresar
+                                    </router-link>
+                                  </div>
+
+                                  <div class="col-md-6 my-3">
+                                    <a href="#" class="btn btn-success btn-lg btn-block">
+                                      <span class="icon">
+                                        <i class="fas fas fa-arrow-right"></i> Continuar
+                                      </span>
+                                    </a>
+                                  </div>
+
+                                </div>
+                              </div>
                             </div>
-    
+                          </div>
                         </div>
+
+                      </div>
                     </div>
+                  </div>
+                  <!-- contenido web -->
+
+
                 </div>
-                <!-- contenido web -->
-    
-    
-            </div>
-    
-        </div>
-    </div>
-    `,
+
+              </div>
+              </div>
+              `,
   data() {
     return {
       datos: "",
@@ -777,6 +780,78 @@ app.component("web-regDoc", {
   },
   computed: {},
   methods: {},
+  created() {},
+  mounted() {},
+});
+app.component("web-citas", {
+  template: /*html*/ `
+              <div class="row justify-content-center align-items-center vh-100 animate__animated animate__fadeIn">
+
+                <div class="col-md-10 mx-auto vh-100 m-0 p-0">
+                  <div class="row justify-content-center align-items-center vh-100">
+
+                    <!-- contenido web -->
+                    <div class="card border-0 shadow-lg">
+                      <div class="card-body p-0 m-0">
+                        <div class="row">
+
+                          <div class="col-md-12 d-md-block animate__animated animate__fadeIn p-0 m-0">
+                            <div class="col-md-12 mx-auto">
+                              <div class="my-3">
+                                <div class="my-3">
+                                  <div class="mx-auto text-center">
+
+                                    <div class="iframe-container">
+                                      <iframe src="https://calendar.google.com/calendar/u/0/appointments/AcZssZ29VUOgAqxf8PFLdrHSDuwSDaUGRO-wCg6oAy8=" :key="reloadKey" title="Google Calendar" allowfullscreen>
+                                      </iframe>
+                                    </div>
+                                  </div>
+
+
+
+                                  <br>
+                                  <div class="row justify-content-center">
+                                    <div class="col-md-6 my-3">
+                                      <div @click="updateIframe" class="btn btn-secondary btn-lg btn-block">
+                                        <i class="fas fas fa-arrow-left"></i> Regresar
+                                      </div>
+                                    </div>
+
+                                    <div class="col-md-6 my-3">
+                                      <router-link class="a btn btn-danger btn-lg btn-block" to="/">
+                                        Salir <i class="fas fas fa-sign-out-alt"></i>
+                                      </router-link>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <!-- contenido web -->
+
+
+                  </div>
+
+                </div>
+              </div>
+              `,
+  data() {
+    return {
+      datos: "",
+      reloadKey: 0,
+    };
+  },
+  computed: {},
+  methods: {
+    updateIframe() {
+       this.reloadKey++;
+    }
+  },
   created() {},
   mounted() {},
 });
