@@ -73,7 +73,6 @@ app.component("web-inicio", {
   created() {},
   mounted() {},
 });
-
 app.component("web-registro", {
   template: /*html*/ `
 <div class="row justify-content-center align-items-center vh-100 animate__animated animate__fadeIn">
@@ -152,7 +151,6 @@ app.component("web-registro", {
   created() {},
   mounted() {},
 });
-
 app.component("web-regEst", {
   template: /*html*/ `
 <div class="row justify-content-center align-items-center vh-100 animate__animated animate__fadeIn">

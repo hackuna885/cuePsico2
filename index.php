@@ -34,29 +34,5 @@
         app.use(router)
         app.mount("#app")
     </script>
-    <script>
-        // store/index.js
-        import Vue from 'vue'
-        import Vuex from 'vuex'
-
-        Vue.use(Vuex)
-
-        export default new Vuex.Store({
-        state: {
-            user: null,
-            // Otras propiedades...
-        },
-        getters: {
-            isAuthenticated: state => !!state.user, // Devuelve true si hay un usuario
-            // Otros getters...
-        },
-        mutations: {
-            // Tus mutations...
-        },
-        actions: {
-            // Tus actions...
-        }
-        })
-    </script>
 </body>
 </html>

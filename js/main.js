@@ -20,7 +20,7 @@ const routes = [
   { path: '/web-registro', component: Web_registro },
   { path: '/web-regEst', component: Web_regEst },
   { path: '/web-regDoc', component: Web_regDoc },
-  { path: '/web-citas', component: Web_citas, meta: { requiresAuth: true } },
+  { path: '/web-citas', component: Web_citas, meta: { requiresAuth: true } }, // se agrega "meta: { requiresAuth: true }" para cuando requiera autenticar
   { path: '/web-login', component: Web_login }
 ]
 
@@ -28,6 +28,8 @@ const router = VueRouter.createRouter({
     history: VueRouter.createWebHashHistory(),
     routes,
 })
+
+// Inicia Autenticación
 
 router.beforeEach((to, from, next) => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
@@ -49,7 +51,7 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
-
+// Termina Autenticación
   
 const app = Vue.createApp({
     data() {
