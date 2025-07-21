@@ -43,7 +43,7 @@ $turno = eliminar_tildes($turno);
 $con = new SQLite3("../data/data.db");
 
 if ($opcion === 1) {
-	if($matricula === '' || $correoInst === '' || $passUsr === '' || $passUsrDos === '' || $nombre === '' || $aPaterno  === '' || $aMaterno === '' || $fechaNa === '' || $telPersonal === '' || $selectedDivision === '' || $selectedSpecialty === '' || $nomTutor === '' || $nomRed === '' || $telRed === '' || $turno === ''){
+	if($matricula === '' || $correoInst === '' || $passUsr === '' || $passUsrDos === '' || $nombre === '' || $aPaterno  === '' || $aMaterno === '' || $fechaNa === '' || $telPersonal === '' || $selectedDivision === '' || $nomRed === '' || $telRed === ''){
 		echo json_encode('
 			<div class="alert alert-danger text-center animate__animated animate__fadeIn" role="alert">
 				Llena todos los campos
