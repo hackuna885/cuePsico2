@@ -83,7 +83,7 @@ if ($opcion === 1) {
 			');
 
 		}else{
-			$cs = $con -> query("INSERT INTO registro (matricula, correoInst, passUsr, nombre, aPaterno, aMaterno, nombreComUsr, fechaNa, telPersonal, selectedDivision, selectedSpecialty, nomTutor, nomRed, telRed, turno, correoCript, passCript, userMd5, varNavega, varVersio, varSitemaO, fechaHoraReg, per1, per2) VALUES('$matricula', '$correoInst', '$passUsr', '$nombre', '$aPaterno', '$aMaterno', '$nombreComUsr', '$fechaNa', '$telPersonal', '$selectedDivision', '$selectedSpecialty', '$nomTutor', '$nomRed', '$telRed', '$turno', '$correoCript', '$passCript', '$userMd5', '$varNavega', '$varVersio', '$varSitemaO', '$fechaHoraReg', '0', '0')");
+			$cs = $con -> query("INSERT INTO registro (matricula, correoInst, passUsr, nombre, aPaterno, aMaterno, nombreComUsr, fechaNa, telPersonal, selectedDivision, selectedSpecialty, nomTutor, nomRed, telRed, turno, correoCript, passCript, userMd5, varNavega, varVersio, varSitemaO, fechaHoraReg, per1, per2) VALUES('$matricula', '$correoInst', '$passUsr', '$nombre', '$aPaterno', '$aMaterno', '$nombreComUsr', '$fechaNa', '$telPersonal', '$selectedDivision', '$selectedSpecialty', '$nomTutor', '$nomRed', '$telRed', '$turno', '$correoCript', '$passCript', '$userMd5', '$varNavega', '$varVersio', '$varSitemaO', '$fechaHoraReg', '1', '1')");
 
 
 			echo json_encode('correcto');			

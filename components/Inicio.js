@@ -44,7 +44,7 @@ app.component("web-inicio", {
                         </router-link>
                       </div>
                       <div class="col-md-6 my-3">
-                        <router-link class="a btn btn-success btn-lg btn-block" to="/web-citas">
+                        <router-link class="a btn btn-success btn-lg btn-block" to="/web-login">
                           Iniciar sesión <i class="fas fa-user-alt"></i>
                         </router-link>
                       </div>
@@ -662,11 +662,11 @@ app.component("web-regEst", {
           if (response.data === "correcto") {
             Swal.fire({
               icon: "success",
-              title: "¡Usuario Activado!",
+              title: "¡Alta exitosa!",
               showConfirmButton: false,
               timer: 2000,
               onClose: () => {
-                window.location = "Web_citas";
+                window.location = "/cuePsico2/#/web-login";
               },
             });
           } else {
@@ -813,14 +813,14 @@ app.component("web-citas", {
                                   <div class="row justify-content-center">
                                     <div class="col-md-6 my-3">
                                       <div @click="updateIframe" class="btn btn-secondary btn-lg btn-block">
-                                        <i class="fas fas fa-arrow-left"></i> Regresar
+                                        <i class="fas fa-calendar-day"></i> Horarios
                                       </div>
                                     </div>
 
                                     <div class="col-md-6 my-3">
-                                      <router-link class="a btn btn-danger btn-lg btn-block" to="/">
-                                        Salir <i class="fas fas fa-sign-out-alt"></i>
-                                      </router-link>
+                                      <button @click="logout" class="btn btn-danger btn-lg btn-block">
+                                        Salir <i class="fas fa-sign-out-alt"></i>
+                                      </button>
                                     </div>
 
                                   </div>
@@ -838,7 +838,7 @@ app.component("web-citas", {
                   </div>
 
                 </div>
-              </div>
+              </div>              
               `,
   data() {
     return {
@@ -849,9 +849,233 @@ app.component("web-citas", {
   computed: {},
   methods: {
     updateIframe() {
-       this.reloadKey++;
-    }
+      this.reloadKey++;
+    },
+
+    logout() {
+      // Eliminar el estado de autenticación
+      localStorage.removeItem("isAuthenticated");
+
+      // Redirigir a la página de inicio
+      window.location = "/cuePsico2/#/";
+    },
+
   },
   created() {},
+  mounted() {},
+});
+app.component("web-login", {
+  template: /*html*/ `
+<div class="row justify-content-center align-items-center vh-100 animate__animated animate__fadeIn">
+
+  <div class="col-md-10 mx-auto">
+    <div class="row justify-content-center align-items-center vh-100">
+
+      <div class="card border-0 shadow-lg">
+        <div class="card-body p-0">
+          <div class="row">
+
+            <div class="col-md-12 d-md-block animate__animated animate__fadeIn">
+              <div class="col-md-8 mx-auto">
+                <div class="my-3">
+                  <div class="my-3">
+                    <div class="mx-auto text-center">
+                      <img src="img/logoPsicologia_3D_2.jpg" class="img-fluid" alt="logo" style="width: 350px;">
+                    </div>
+                    <h1 class="text-center h2">
+                      Iniciar sesión
+                    </h1>
+                    <br>
+
+                    <!-- Formulario de Registro -->
+                     <form class="user" @submit.prevent="alta">
+                            <div class="form-group row">
+                              <div class="mb-3 mb-sm-0">
+                                <input type="email" class="form-control form-control-user mb-3" v-model="nCorreo" placeholder="Correo electrónico*" required />
+                              </div>
+                            </div>
+                            <div class="form-group" v-html="datos"></div>
+                            <div class="form-group row">
+                              <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="password" class="form-control form-control-user mb-3" v-model="passUsr" placeholder="Contraseña*" required />
+                              </div>
+                              <div class="col-sm-6">
+                                <input type="password" class="form-control form-control-user mb-3" v-model="passUsrDos" placeholder="Repetir contraseña*" :disabled="estadoPass" required />
+                              </div>
+                            </div>
+          
+                            <div :class="notificaEstadoPass" role="alert">
+                              {{validaContrasena}}
+                            </div>
+                            <button class="btn btn-success btn-lg btn-block" :disabled="this.nCorreo != '' && this.passUsr != '' && this.passUsrDos != '' && this.validaBtn === true ? this.estadoBtn = flase : this.estadoBtn = true">
+                              Continuar <i class="fas fa-user-alt"></i>
+                            </button>
+          
+                          </form>
+                    <!-- Formulario de Registro -->
+
+                    
+
+                    <hr>
+                        <div class="h5">
+                            <router-link class="a" to="/">Regresar...</router-link>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+              `,
+  data() {
+    return {
+      datos: "",
+      nUsr: "",
+      aPat: "",
+      aMat: "",
+      nInst: "",
+      rfc: "",
+      tel: "",
+      nCorreo: "",
+      passUsr: "",
+      passUsrDos: "",
+      msgAlert: "",
+      estadoPass: true,
+      notificaEstadoPass: "",
+      validaBtn: false,
+      estadoBtn: false,
+    };
+  },
+  computed: {
+    validaContrasena() {
+      this.notificaEstadoPass = "small alert alert-light text-muted";
+
+      if (this.passUsr.length >= 6) {
+        this.estadoPass = false;
+        this.msgAlert =
+          "La contraseña debe tener al menos seis (6) caracteres.";
+        this.validaBtn = false;
+
+        if (this.passUsrDos.length >= 6) {
+          if (this.passUsr === this.passUsrDos) {
+            this.notificaEstadoPass = "small alert alert-success";
+            this.msgAlert = "Contraseña valida.";
+            this.validaBtn = true;
+          } else {
+            this.notificaEstadoPass = "small alert alert-danger";
+            this.msgAlert = "¡Error! Las contraseñas no coinciden.";
+            this.validaBtn = false;
+          }
+        } else {
+          this.estadoPass = false;
+          this.validaBtn = false;
+        }
+      } else {
+        this.msgAlert =
+          "La contraseña debe tener al menos seis (6) caracteres.";
+
+        if (this.passUsrDos != "") {
+          this.estadoPass = false;
+          this.validaBtn = false;
+        } else {
+          this.estadoPass = true;
+          this.validaBtn = false;
+        }
+      }
+
+      return this.msgAlert;
+    },
+  },
+  methods: {
+    alta() {
+      axios
+        .post("../cuePsico2/verifica/alta.app", {
+          opcion: 1,
+          nCorreo: this.nCorreo,
+          passUsr: this.passUsr,
+        })
+        .then((response) => {
+          if (response.data === "correcto") {
+            // Guardar estado de autenticación
+            localStorage.setItem("isAuthenticated", "true");
+
+            Swal.fire({
+              icon: "success",
+              title: "¡Bienvenido!",
+              showConfirmButton: false,
+              timer: 2000,
+              onClose: () => {
+                // Obtener la URL de redirección si existe
+                const redirectUrl = new URLSearchParams(
+                  window.location.search
+                ).get("redirect");
+                // Redireccionar a la ruta original o a web-citas
+                if (redirectUrl) {
+                  window.location = redirectUrl;
+                } else {
+                  window.location = "/cuePsico2/#/web-citas";
+                }
+              },
+            });
+          } else {
+            this.datos = response.data;
+            // console.log(response.data)
+          }
+        })
+        .catch((error) => {
+          console.error("Error de autenticación:", error);
+          Swal.fire({
+            icon: "error",
+            title: "Error de inicio de sesión",
+            text: "No se pudo iniciar sesión. Intente nuevamente.",
+          });
+        });
+    },
+    soloLetras() {
+      if (
+        (event.keyCode > 32 && event.keyCode < 48) ||
+        (event.keyCode > 57 && event.keyCode < 65) ||
+        (event.keyCode > 90 && event.keyCode < 97) ||
+        (event.keyCode > 122 && event.keyCode < 160) ||
+        (event.keyCode > 166 && event.keyCode < 190)
+      )
+        event.returnValue = false;
+    },
+    soloNumeros() {
+      if (
+        (event.keyCode >= 32 && event.keyCode < 48) ||
+        (event.keyCode > 57 && event.keyCode < 190)
+      )
+        event.returnValue = false;
+    },
+
+    // ####
+    checkAuth() {
+      return localStorage.getItem("isAuthenticated") === "true";
+    },
+    // ####
+  },
+  created() {
+    // Captura el parámetro de redirección de la URL si existe
+    const urlParams = new URLSearchParams(window.location.search);
+    this.redirectUrl = urlParams.get("redirect");
+
+    // Si el usuario ya está autenticado, redirigir inmediatamente
+    if (this.checkAuth()) {
+      const redirectTo = this.redirectUrl || "/cuePsico2/#/web-citas";
+      window.location = redirectTo;
+    }
+  },
   mounted() {},
 });
