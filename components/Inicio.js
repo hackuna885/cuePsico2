@@ -475,6 +475,10 @@ app.component("web-regEst", {
             value: "Licenciatura en Innovación de Negocios y Mercadotecnia",
             text: "Licenciatura en Innovación de Negocios y Mercadotecnia",
           },
+          {
+            value: "Maestría en Innovación y Negocios",
+            text: "Maestría en Innovación y Negocios",
+          },
         ],
         "División Académica de Informática": [
           {
