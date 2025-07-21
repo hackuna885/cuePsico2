@@ -820,7 +820,7 @@ app.component("web-regDoc", {
                         <div class="col-sm-12 mb-3">
                           <label class="form-label">Área de adscripción:</label>
                           <select class="form-control custom-select" v-model="selectedDivision" required>
-                            <option value="">Selecciona una división</option>
+                            <option value="">Selecciona una área</option>
                             <option v-for="division in divisions" :key="division.value" :value="division.value">
                               {{ division.text }}
                             </option>
@@ -913,6 +913,22 @@ app.component("web-regDoc", {
         }
       ],
       divisions: [
+        {
+          value: "Rectoría",
+          text: "Rectoría",
+        },        
+        {
+          value: "Secretaría Académica",
+          text: "Secretaría Académica",
+        },
+        {
+          value: "Secretaria de Vinculación",
+          text: "Secretaria de Vinculación",
+        },
+        {
+          value: "Dirección de Administración y Finanzas",
+          text: "Dirección de Administración y Finanzas",
+        },
         {
           value: "División Académica de Administración",
           text: "División Académica de Administración",
