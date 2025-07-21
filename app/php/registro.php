@@ -19,6 +19,7 @@ $passUsrDos = (isset($_POST['passUsrDos'])) ? ($_POST['passUsrDos']) : '';
 $nombre = (isset($_POST['nombre'])) ? mb_strtoupper($_POST['nombre'], 'utf-8') : '';
 $aPaterno = (isset($_POST['aPaterno'])) ? mb_strtoupper($_POST['aPaterno'], 'utf-8') : '';
 $aMaterno = (isset($_POST['aMaterno'])) ? mb_strtoupper($_POST['aMaterno'], 'utf-8') : '';
+$selectedSexo = (isset($_POST['selectedSexo'])) ? mb_strtoupper($_POST['selectedSexo'], 'utf-8') : '';
 $fechaNa = (isset($_POST['fechaNa'])) ? ($_POST['fechaNa']) : '';
 $telPersonal = (isset($_POST['telPersonal'])) ? ($_POST['telPersonal']) : '';
 $selectedDivision = (isset($_POST['selectedDivision'])) ? mb_strtoupper($_POST['selectedDivision'], 'utf-8') : '';
@@ -83,7 +84,7 @@ if ($opcion === 1) {
 			');
 
 		}else{
-			$cs = $con -> query("INSERT INTO registro (matricula, correoInst, passUsr, nombre, aPaterno, aMaterno, nombreComUsr, fechaNa, telPersonal, selectedDivision, selectedSpecialty, nomTutor, nomRed, telRed, turno, correoCript, passCript, userMd5, varNavega, varVersio, varSitemaO, fechaHoraReg, per1, per2) VALUES('$matricula', '$correoInst', '$passUsr', '$nombre', '$aPaterno', '$aMaterno', '$nombreComUsr', '$fechaNa', '$telPersonal', '$selectedDivision', '$selectedSpecialty', '$nomTutor', '$nomRed', '$telRed', '$turno', '$correoCript', '$passCript', '$userMd5', '$varNavega', '$varVersio', '$varSitemaO', '$fechaHoraReg', '1', '1')");
+			$cs = $con -> query("INSERT INTO registro (matricula, correoInst, passUsr, nombre, aPaterno, aMaterno, nombreComUsr, sexo, fechaNa, telPersonal, selectedDivision, selectedSpecialty, nomTutor, nomRed, telRed, turno, correoCript, passCript, userMd5, varNavega, varVersio, varSitemaO, fechaHoraReg, per1, per2) VALUES('$matricula', '$correoInst', '$passUsr', '$nombre', '$aPaterno', '$aMaterno', '$nombreComUsr', '$selectedSexo', '$fechaNa', '$telPersonal', '$selectedDivision', '$selectedSpecialty', '$nomTutor', '$nomRed', '$telRed', '$turno', '$correoCript', '$passCript', '$userMd5', '$varNavega', '$varVersio', '$varSitemaO', '$fechaHoraReg', '1', '1')");
 
 
 			echo json_encode('correcto');			

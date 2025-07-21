@@ -37,8 +37,6 @@ if ($opcion === 1) {
 			$password = $resul['passCript'];
 			$per1 = $resul['per1'];
 		}
-
-		$_SESSION['correoMd5'] = $correoMd5;
 		
 		$correoMd5 = (isset($correoMd5)) ?  $correoMd5 : '';
 

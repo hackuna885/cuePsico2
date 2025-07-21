@@ -235,6 +235,16 @@ app.component("web-regEst", {
                             v-model="aMaterno" required>
                         </div>
                         <div class="col-sm-6 mb-3">
+                          <label class="form-label">Sexo:</label>
+                          <select class="form-control custom-select" v-model="selectedSexo" required>
+                            <option value="">Selecciona una opción</option>
+                            <option v-for="sexo in sexos" :key="sexo.value" :value="sexo.value">
+                              {{ sexo.text }}
+                            </option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6 mb-3"></div>
+                        <div class="col-sm-6 mb-3">
                           <label class="form-label">Fecha de nacimiento:</label>
                           <input type="date" class="form-control form-control-user" id="fecha"
                             placeholder="Fecha de nacimiento" maxlength="10" v-model="fechaNa" required>
@@ -248,7 +258,7 @@ app.component("web-regEst", {
                         </div>
                         <div class="col-sm-12 mb-3">
                           <label class="form-label">División Académica:</label>
-                          <select class="form-control custom-select" v-model="selectedDivision">
+                          <select class="form-control custom-select" v-model="selectedDivision" required>
                             <option value="">Selecciona una división</option>
                             <option v-for="division in divisions" :key="division.value" :value="division.value">
                               {{ division.text }}
@@ -258,7 +268,7 @@ app.component("web-regEst", {
                         <div class="col-sm-12 mb-3">
                           <label class="form-label">Programa Educativo:</label>
                           <select class="form-control custom-select" v-model="selectedSpecialty"
-                            :disabled="!selectedDivision">
+                            :disabled="!selectedDivision" required>
                             <option value="">Selecciona una carrera</option>
                             <option v-for="specialty in filteredSpecialties" :key="specialty.value"
                               :value="specialty.value">
@@ -297,8 +307,7 @@ app.component("web-regEst", {
                       <hr>
                       <div class="form-group row">
                         <div class="col-sm-12 mb-3">
-                          <label>Selecciona el turno contrario a tu horario de clases para
-                            recibir atención psicológica:</label>
+                          <label>¿A qué turno perteneces?</label>
                           <div class="text-center mt-4">
                             <div class="form-check form-check-inline mx-3 mx-sm-5">
                               <input class="form-check-input" type="radio" name="turno" value="Matutino" v-model="turno"
@@ -325,7 +334,7 @@ app.component("web-regEst", {
                         <div class="col-md-6 my-3">
 
                           <button class="btn btn-success btn-lg btn-block"
-                            :disabled="this.matricula != '' && this.correoInst != '' && this.passUsr != '' && this.passUsrDos != '' && this.nombre != '' && this.aPaterno != '' && this.aMaterno != '' && this.fechaNa != '' && this.telPersonal != '' && this.selectedDivision != '' && this.selectedSpecialty != '' && this.nomTutor != '' && this.nomRed != '' && this.telRed != '' && this.turno != '' && this.validaBtn === true ? this.estadoBtn = flase : this.estadoBtn = true">
+                            :disabled="this.matricula != '' && this.correoInst != '' && this.passUsr != '' && this.passUsrDos != '' && this.nombre != '' && this.aPaterno != '' && this.aMaterno != '' && this.selectedSexo != '' && this.fechaNa != '' && this.telPersonal != '' && this.selectedDivision != '' && this.selectedSpecialty != '' && this.nomTutor != '' && this.nomRed != '' && this.telRed != '' && this.turno != '' && this.validaBtn === true ? this.estadoBtn = flase : this.estadoBtn = true">
                             <i class="fas fas fa-arrow-right"></i> Continuar
                           </button>
 
@@ -366,12 +375,23 @@ app.component("web-regEst", {
       aMaterno: "",
       fechaNa: "",
       telPersonal: "",
+      selectedSexo: "",
       selectedDivision: "",
       selectedSpecialty: "",
       nomTutor: "",
       nomRed: "",
       telRed: "",
       turno: "",
+      sexos: [
+        {
+          value: "Masculino",
+          text: "Masculino",
+        },
+        {
+          value: "Femenino",
+          text: "Femenino",
+        }
+      ],
       divisions: [
         {
           value: "División Académica de Administración",
@@ -647,6 +667,7 @@ app.component("web-regEst", {
           nombre: this.nombre,
           aPaterno: this.aPaterno,
           aMaterno: this.aMaterno,
+          selectedSexo: this.selectedSexo,
           fechaNa: this.fechaNa,
           telPersonal: this.telPersonal,
           selectedDivision: this.selectedDivision,
@@ -658,13 +679,16 @@ app.component("web-regEst", {
         })
         .then((response) => {
           if (response.data === "correcto") {
+            // Guardar el estado de autenticación
+            localStorage.setItem('isAuthenticated', 'true');
+
             Swal.fire({
               icon: "success",
               title: "¡Alta exitosa!",
               showConfirmButton: false,
               timer: 2000,
               onClose: () => {
-                window.location = "/cuePsico2/#/web-login";
+                window.location = "/cuePsico2/#/web-citas";
               },
             });
           } else {
@@ -939,12 +963,6 @@ app.component("web-login", {
   data() {
     return {
       datos: "",
-      nUsr: "",
-      aPat: "",
-      aMat: "",
-      nInst: "",
-      rfc: "",
-      tel: "",
       nCorreo: "",
       passUsr: "",
       passUsrDos: "",
@@ -953,6 +971,7 @@ app.component("web-login", {
       notificaEstadoPass: "",
       validaBtn: false,
       estadoBtn: false,
+      redirectUrl: null,
     };
   },
   computed: {
