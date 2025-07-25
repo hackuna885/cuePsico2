@@ -833,7 +833,7 @@ app.component("web-regDoc", {
                       </div>                      
                       <hr>
                       <div class="form-group row">
-                        <p class="ml-3">Nombre y número telefónico de Red de Apoyo:</p>
+                        <p class="ml-3">Nombre y número telefónico de una red apoyo familiar (En caso de emergencia)</p>
                         <div class="col-sm-6 mb-3">
                           <input type="text" class="form-control form-control-user" id="nombreRed" placeholder="Nombre"
                             @keypress="soloLetras"
