@@ -27,8 +27,8 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/axios.min.js"></script>
     <script src="js/sweetalert2.js"></script>
-    <script src="js/main.js?v=1.0.2"></script>
-    <script src="components/Inicio.js?v=1.0.2"></script>
+    <script src="js/main.js?v=1.0.1"></script>
+    <script src="components/Inicio.js?v=1.0.1"></script>
     <script>
         app.use(store);
         app.use(router)

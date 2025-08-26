@@ -1216,6 +1216,9 @@ app.component("web-login", {
                     
 
                     <hr>
+                        <div class="h5 mx-auto text-center">
+                            <router-link class="a" to="/web-restablecer">¿Olvidaste tu contraseña?</router-link>
+                        </div>
                         <div class="h5">
                             <router-link class="a" to="/">Regresar...</router-link>
                         </div>
@@ -1372,4 +1375,304 @@ app.component("web-login", {
     }
   },
   mounted() {},
+});
+app.component("web-restablecer", {
+  template: /*html*/ `
+<div class="row justify-content-center align-items-center vh-100 animate__animated animate__fadeIn">
+  <div class="col-md-10 mx-auto">
+    <div class="row justify-content-center align-items-center vh-100">
+      <div class="card border-0 shadow-lg">
+        <div class="card-body p-0">
+          <div class="row">
+            <div class="col-md-12 d-md-block animate__animated animate__fadeIn">
+              <div class="col-md-8 mx-auto">
+                <div class="my-3">
+                  <div class="my-3">
+                    <div class="mx-auto text-center">
+                      <img src="img/logoPsicologia_3D_2.jpg" class="img-fluid" alt="logo" style="width: 350px;">
+                    </div>
+                    <h1 class="text-center h2">
+                      ¿Olvidaste tu contraseña?
+                    </h1>
+                    <br>
+                    <p class="mx-auto text-center">Ingresa tu correo electrónico y te enviaremos un enlace para restablecerla.</p>
+                    <br>
+
+                    <!-- Formulario de Registro -->
+                     <form class="user" @submit.prevent="controlCorreo">
+                            <div class="form-group row">
+                              <div class="mb-3 mb-sm-0">
+                                <input 
+                                  type="email" 
+                                  class="form-control form-control-user mb-3" 
+                                  v-model="nCorreo" 
+                                  @input="validarEmail"
+                                  placeholder="Correo electrónico*" 
+                                  required 
+                                />
+                              </div>
+                            </div>
+                            <div class="form-group" v-html="datos"></div>
+          
+                            <div :class="notificaEstadoPass" role="alert">
+                              {{validaContrasena}}
+                            </div>
+                            
+                            <button 
+                              class="btn btn-success btn-lg btn-block" 
+                              :disabled="!isEmailValid"
+                              :class="{ 'btn-secondary': !isEmailValid, 'btn-success': isEmailValid }"
+                            >
+                              Restablecer contraseña
+                            </button>
+          
+                          </form>
+                    <!-- Formulario de Registro -->
+
+                    <hr>
+                        <div class="h5 text-center mx-auto">
+                            <router-link class="a" to="/web-login">¿Ya tienes una cuenta? ¡Iniciar sesión!</router-link>
+                        </div>
+                        <div class="h5">
+                            <router-link class="a" to="/">Regresar...</router-link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`,
+  data() {
+    return {
+      datos: "",
+      nCorreo: "",
+      msgAlert: "",
+      estadoPass: true,
+      notificaEstadoPass: "",
+      validaBtn: false,
+      estadoBtn: false,
+      redirectUrl: null,
+      isEmailValid: false
+    };
+  },
+  computed: {},
+  methods: {
+    validarEmail() {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      this.isEmailValid = this.nCorreo.trim() !== '' && emailRegex.test(this.nCorreo);
+    },
+    
+    controlCorreo () {
+            axios.post('../cuePsico2/recupera/inicio.app', {
+                opcion: 1,
+                nCorreo: this.nCorreo
+            })
+            .then(response => {
+              if (response.data === 'correcto') {
+                  Swal.fire({
+                      icon: 'success',
+                      title: '¡Gracias!',
+                      html: 'Te enviaremos un enlace por correo para restablecer tu contraseña<br><br>',
+                      showConfirmButton: false,
+                      timer: 2000,
+                      onClose: () => {  
+                        window.location = "/cuePsico2/#/web-login";
+                      }
+                  })
+              }else{
+                  this.datos = response.data
+                  // console.log(response.data)
+              }
+          })
+        },
+    
+    checkAuth() {
+      return localStorage.getItem("isAuthenticated") === "true";
+    },
+  },
+  
+  created() {
+    const urlParams = new URLSearchParams(window.location.search);
+    this.redirectUrl = urlParams.get("redirect");
+
+    if (this.checkAuth()) {
+      const redirectTo = this.redirectUrl || "/cuePsico2/#/web-citas";
+      window.location = redirectTo;
+    }
+  },
+  
+  mounted() {},
+});
+app.component("web-rescontra", {
+  template: /*html*/ `
+<div class="row justify-content-center align-items-center vh-100 animate__animated animate__fadeIn">
+  <div class="col-md-10 mx-auto">
+    <div class="row justify-content-center align-items-center vh-100">
+      <div class="card border-0 shadow-lg">
+        <div class="card-body p-0">
+          <div class="row">
+            <div class="col-md-12 d-md-block animate__animated animate__fadeIn">
+              <div class="col-md-8 mx-auto">
+                <div class="my-3">
+                  <div class="my-3">
+                    <div class="mx-auto text-center">
+                      <img src="img/logoPsicologia_3D_2.jpg" class="img-fluid" alt="logo" style="width: 350px;">
+                    </div>
+                    <h1 class="text-center h2">
+                      ¡Hackuna!
+                    </h1>
+                    <br>
+                    <p class="mx-auto text-center">Escribe tu nueva contraseña y haz click en el
+                    botón [...] "Cambiar contraseña"</p>
+                    <br>
+
+                    <!-- Formulario de Registro -->
+                    <form class="user" @submit.prevent="cambioPass">
+                      <div class="form-group row">
+                    
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                          <input type="password" class="form-control form-control-user mb-3" v-model="passUsr" placeholder="Contraseña*"
+                            required />
+                        </div>
+                        <div class="col-sm-6">
+                          <input type="password" class="form-control form-control-user mb-3" v-model="passUsrDos"
+                            placeholder="Repetir contraseña*" :disabled="estadoPass" required />
+                        </div>
+                    
+                      </div>
+                      <div class="form-group" v-html="datos"></div>
+                    
+                      <div :class="notificaEstadoPass" role="alert">
+                        {{validaContrasena}}
+                      </div>
+                    
+                      <button class="btn btn-success btn-lg btn-block" :disabled="this.passUsr != '' && this.passUsrDos != '' && this.validaBtn === true ? this.estadoBtn = flase : this.estadoBtn = true">
+                        Restablecer contraseña
+                      </button>
+                    
+                    </form>
+                    <!-- Formulario de Registro -->
+
+                    <hr>
+                        <div class="h5 text-center mx-auto">
+                            <router-link class="a" to="/web-login">¿Ya tienes una cuenta? ¡Iniciar sesión!</router-link>
+                        </div>
+                        <div class="h5">
+                            <router-link class="a" to="/">Regresar...</router-link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`,
+  data() {
+    return {
+      datos: '',
+      correoUrl: '',
+      passUsr: '',
+      passUsrDos: '',
+      msgAlert: '',
+      estadoPass: true,
+      notificaEstadoPass: '',
+      validaBtn: false
+    };
+  },
+  computed: {
+      validaContrasena() {
+          this.notificaEstadoPass = 'small alert alert-light text-muted'
+
+          if (this.passUsr.length >= 6) {
+
+            this.estadoPass = false
+            this.msgAlert = 'La contraseña debe tener al menos 6 caracteres'
+            this.validaBtn = false
+
+            if (this.passUsrDos.length >= 6) {
+
+              if (this.passUsr === this.passUsrDos) {
+
+                this.notificaEstadoPass = 'small alert alert-success'
+                this.msgAlert = 'Contraseña valida'
+                this.validaBtn = true
+
+              } else {
+                this.notificaEstadoPass = 'small alert alert-danger'
+                this.msgAlert = '¡Error! Las contraseñas que escribió no coinciden'
+                this.validaBtn = false
+              }
+
+
+
+            } else {
+              this.estadoPass = false
+              this.validaBtn = false
+            }
+
+          } else {
+            this.msgAlert = 'La contraseña debe tener al menos 6 caracteres'
+
+            if (this.passUsrDos != '') {
+              this.estadoPass = false
+              this.validaBtn = false
+            } else {
+              this.estadoPass = true
+              this.validaBtn = false
+            }
+
+          } 
+
+          return this.msgAlert
+        }
+  },
+  methods: {
+      leerURL() {
+        const correoMd5 = this.$route.query.nCorreo;
+        if (correoMd5) {
+          this.correoUrl = correoMd5;
+          console.log(correoMd5);
+        }
+      },
+      cambioPass () {
+        axios.post('../cuePsico2/resetPws/inicio.app', {
+            opcion: 1,
+            correoUrl: this.correoUrl,
+            passUsr: this.passUsr
+        })
+        .then(response => {
+          if (response.data === 'correcto') {
+              Swal.fire({
+                  icon: 'success',
+                  title: '¡Listo! Contraseña restablecida',
+                  showConfirmButton: false,
+                  timer: 2000,
+                  onClose: () => {  
+                    window.location="/cuePsico2/#/web-login";
+                  }
+              })
+          }else{
+              this.datos = response.data
+              console.log(response.data)
+          }
+      })
+    }
+  },
+  created () {
+      
+  },
+  mounted() {
+      this.leerURL()
+  },
 });

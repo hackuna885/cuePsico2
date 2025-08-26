@@ -14,6 +14,8 @@ const Web_regEst = { template: '<web-regEst></web-regEst>' }
 const Web_regDoc = { template: '<web-regDoc></web-regDoc>' }
 const Web_citas = { template: '<web-citas></web-citas>' }
 const Web_login = { template: '<web-login></web-login>' }
+const Web_restablece = { template: '<web-restablecer></web-restablecer>' }
+const Web_rescontra = { template: '<web-rescontra></web-rescontra>' }
 
 const routes = [
   { path: '/', component: Inicio },
@@ -21,7 +23,9 @@ const routes = [
   { path: '/web-regEst', component: Web_regEst },
   { path: '/web-regDoc', component: Web_regDoc },
   { path: '/web-citas', component: Web_citas, meta: { requiresAuth: true } }, // se agrega "meta: { requiresAuth: true }" para cuando requiera autenticar
-  { path: '/web-login', component: Web_login }
+  { path: '/web-login', component: Web_login },
+  { path: '/web-restablecer', component: Web_restablece },
+  { path: '/web-rescontra', component: Web_rescontra }
 ]
 
 const router = VueRouter.createRouter({
