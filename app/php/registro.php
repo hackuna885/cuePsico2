@@ -114,7 +114,7 @@ if ($opcion === 1) {
 			// Email mínimo
 			$mail->setFrom($email, 'SDAP - UTFV');
 			$mail->addAddress($correoInst);
-			$mail->Subject = 'Bienvenido(a)a la Plataforma de Citas - Área de Atención Psicológica UTFV';
+			$mail->Subject = 'Bienvenido(a) la Plataforma de Citas - Área de Atención Psicológica UTFV';
 			$mail->isHTML(true);
 			$mail->Body = '
 			<html>

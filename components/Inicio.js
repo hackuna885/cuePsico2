@@ -1525,7 +1525,7 @@ app.component("web-rescontra", {
                       <img src="img/logoPsicologia_3D_2.jpg" class="img-fluid" alt="logo" style="width: 350px;">
                     </div>
                     <h1 class="text-center h2">
-                      ¡Hackuna!
+                      ¡Restablecer contraseña!
                     </h1>
                     <br>
                     <p class="mx-auto text-center">Escribe tu nueva contraseña y haz click en el
