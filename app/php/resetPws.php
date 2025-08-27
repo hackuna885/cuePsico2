@@ -71,7 +71,7 @@ if ($opcion === 1) {
 				$mail->CharSet = 'UTF-8';
 				
 				// Email mínimo
-				$mail->setFrom($email, 'SDAP - UTFV');
+				$mail->setFrom($email, 'SDAPI - UTFV');
 				$mail->addAddress($correoInst);
 				$mail->Subject = 'Cambio de contraseña exitoso - Plataforma de Citas - Área de Atención Psicológica UTFV';
 				$mail->isHTML(true);
