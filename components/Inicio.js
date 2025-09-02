@@ -186,7 +186,7 @@ app.component("web-regEst", {
                         </div>
                         <div class="col-sm-6 mb-3">
                           <input type="email" class="form-control form-control-user" id="correo"
-                            placeholder="Correo Institucional (@utfv.edu.mx)" @keypress="soloCorreo"
+                            placeholder="Correo Institucional (@utfv.edu.mx)" @keypress="soloCorreo" @blur="validaCorreo"
                             v-model="correoInst" required>
                         </div>
                         <div class="form-group" v-html="datos"></div>
@@ -651,6 +651,16 @@ app.component("web-regEst", {
     },
   },
   methods: {
+    validaCorreo() {
+      if (this.correoInst && !this.correoInst.endsWith('@utfv.edu.mx')) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Correo no válido',
+          text: 'Por favor, ingrese un correo con el dominio @utfv.edu.mx',
+        });
+        this.correoInst = '';
+      }
+    },
     alta() {
       axios
         .post("../cuePsico2/registro/alta.app", {
@@ -760,7 +770,7 @@ app.component("web-regDoc", {
                         </div>
                         <div class="col-sm-6 mb-3">
                           <input type="email" class="form-control form-control-user" id="correo"
-                            placeholder="Correo Institucional (@utfv.edu.mx)" @keypress="soloCorreo"
+                            placeholder="Correo Institucional (@utfv.edu.mx)" @keypress="soloCorreo" @blur="validaCorreo"
                             v-model="correoInst" required>
                         </div>
                         <div class="form-group" v-html="datos"></div>
@@ -1008,6 +1018,16 @@ app.component("web-regDoc", {
   },
 
   methods: {
+    validaCorreo() {
+      if (this.correoInst && !this.correoInst.endsWith('@utfv.edu.mx')) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Correo no válido',
+          text: 'Por favor, ingrese un correo con el dominio @utfv.edu.mx',
+        });
+        this.correoInst = '';
+      }
+    },
     alta() {
       axios
         .post("../cuePsico2/registro/alta.app", {

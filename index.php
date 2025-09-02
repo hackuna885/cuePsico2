@@ -7,7 +7,7 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/style.css?v=1.0.2">
+    <link rel="stylesheet" href="css/style.css?v=1.0.3">
     <link rel="stylesheet" href="css/sweetalert2.min.css">
     <link rel="stylesheet" href="css/hover.css" />
     <link rel="icon" href="favicon.ico?v=2" type="image/x-icon" />
@@ -27,8 +27,8 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/axios.min.js"></script>
     <script src="js/sweetalert2.js"></script>
-    <script src="js/main.js?v=1.0.1"></script>
-    <script src="components/Inicio.js?v=1.0.1"></script>
+    <script src="js/main.js?v=1.0.3"></script>
+    <script src="components/Inicio.js?v=1.0.3"></script>
     <script>
         app.use(store);
         app.use(router)
